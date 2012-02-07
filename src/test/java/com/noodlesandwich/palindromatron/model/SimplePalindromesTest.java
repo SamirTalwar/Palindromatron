@@ -17,4 +17,9 @@ public final class SimplePalindromesTest {
     rejects_non_palindromes() {
         assertThat(palindromes.verify("tennis"), is(false));
     }
+
+    @Test public void
+    ignores_white_space() {
+        assertThat(palindromes.verify("never\nodd or\teven"), is(true));
+    }
 }
