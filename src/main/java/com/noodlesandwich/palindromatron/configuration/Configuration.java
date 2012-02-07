@@ -1,7 +1,9 @@
-package com.noodlesandwich.palindromatron;
+package com.noodlesandwich.palindromatron.configuration;
+
+import java.io.InputStream;
+import java.io.PrintStream;
 
 import com.google.inject.AbstractModule;
-import com.google.inject.Provider;
 import com.noodlesandwich.palindromatron.controller.Console;
 import com.noodlesandwich.palindromatron.controller.Controller;
 import com.noodlesandwich.palindromatron.view.ConsoleInput;
@@ -13,15 +15,9 @@ public final class Configuration extends AbstractModule {
     @Override
     protected void configure() {
         bind(Controller.class).to(Console.class);
-        bind(Input.class).toProvider(new Provider<Input>() {
-            @Override public Input get() {
-                return new ConsoleInput(System.in, System.out);
-            }
-        });
-        bind(Output.class).toProvider(new Provider<Output>() {
-            @Override public Output get() {
-                return new ConsoleOutput(System.out);
-            }
-        });
+        bind(Input.class).to(ConsoleInput.class);
+        bind(Output.class).to(ConsoleOutput.class);
+        bind(InputStream.class).annotatedWith(ConsoleDependency.class).toInstance(System.in);
+        bind(PrintStream.class).annotatedWith(ConsoleDependency.class).toInstance(System.out);
     }
 }

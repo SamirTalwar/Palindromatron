@@ -4,11 +4,13 @@ import java.io.PrintStream;
 
 import javax.inject.Inject;
 
+import com.noodlesandwich.palindromatron.configuration.ConsoleDependency;
+
 public final class ConsoleOutput implements Output {
     private final PrintStream outputStream;
 
     @Inject
-    public ConsoleOutput(final PrintStream outputStream) {
+    public ConsoleOutput(@ConsoleDependency final PrintStream outputStream) {
         this.outputStream = outputStream;
     }
 

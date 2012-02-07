@@ -2,6 +2,7 @@ package com.noodlesandwich.palindromatron;
 
 import com.google.inject.Guice;
 import com.google.inject.Injector;
+import com.noodlesandwich.palindromatron.configuration.Configuration;
 import com.noodlesandwich.palindromatron.controller.Controller;
 
 public final class Application {
