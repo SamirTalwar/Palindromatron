@@ -32,4 +32,9 @@ public final class SimplePalindromesTest {
     ignore_case() {
         assertThat(palindromes.verify("Madam"), is(true));
     }
+
+    @Test public void
+    ignore_punctuation() {
+        assertThat(palindromes.verify("Madam, I'm Adam."), is(true));
+    }
 }
