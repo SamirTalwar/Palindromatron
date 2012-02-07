@@ -27,4 +27,9 @@ public final class SimplePalindromesTest {
     do_not_ignore_numbers() {
         assertThat(palindromes.verify("23 god dog 23"), is(false));
     }
+
+    @Test public void
+    ignore_case() {
+        assertThat(palindromes.verify("Madam"), is(true));
+    }
 }
