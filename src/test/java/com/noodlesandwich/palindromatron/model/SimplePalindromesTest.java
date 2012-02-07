@@ -22,4 +22,9 @@ public final class SimplePalindromesTest {
     ignores_white_space() {
         assertThat(palindromes.verify("never\nodd or\teven"), is(true));
     }
+
+    @Test public void
+    do_not_ignore_numbers() {
+        assertThat(palindromes.verify("23 god dog 23"), is(false));
+    }
 }
