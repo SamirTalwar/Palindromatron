@@ -1,0 +1,20 @@
+package com.noodlesandwich.palindromatron;
+
+import com.google.inject.AbstractModule;
+import com.google.inject.Provider;
+import com.noodlesandwich.palindromatron.controller.Console;
+import com.noodlesandwich.palindromatron.controller.Controller;
+import com.noodlesandwich.palindromatron.view.ConsoleInput;
+import com.noodlesandwich.palindromatron.view.Input;
+
+public final class Configuration extends AbstractModule {
+    @Override
+    protected void configure() {
+        bind(Controller.class).to(Console.class);
+        bind(Input.class).toProvider(new Provider<Input>() {
+            @Override public Input get() {
+                return new ConsoleInput(System.in, System.out);
+            }
+        });
+    }
+}
