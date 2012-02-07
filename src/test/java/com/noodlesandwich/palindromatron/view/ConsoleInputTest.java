@@ -11,8 +11,6 @@ import org.jmock.api.Action;
 import org.jmock.api.Invocation;
 import org.jmock.integration.junit4.JMock;
 import org.jmock.lib.legacy.ClassImposteriser;
-import org.junit.After;
-import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 
@@ -25,23 +23,6 @@ public class ConsoleInputTest {
 
     private final InputStream inputStream = context.mock(InputStream.class);
     private final PrintStream outputStream = context.mock(PrintStream.class);
-
-    private InputStream realInputStream;
-    private PrintStream realOutputStream;
-
-    @Before public void
-    set_up_the_input_stream() {
-        realInputStream = System.in;
-        realOutputStream = System.out;
-        System.setIn(inputStream);
-        System.setOut(outputStream);
-    }
-
-    @After public void
-    reset_the_input_stream() {
-        System.setIn(realInputStream);
-        System.setOut(realOutputStream);
-    }
 
     @Test public void
     reads_from_the_console() throws IOException {
