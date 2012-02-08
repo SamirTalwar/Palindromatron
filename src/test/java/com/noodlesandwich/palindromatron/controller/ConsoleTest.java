@@ -30,4 +30,21 @@ public class ConsoleTest {
 
         console.run();
     }
+
+    @Test public void
+    asks_the_user_for_a_palindrome_and_tells_them_if_it_is_not() throws Exception {
+        final Input input = context.mock(Input.class);
+        final Output output = context.mock(Output.class);
+        final Palindromes palindromes = context.mock(Palindromes.class);
+
+        final Console console = new Console(input, output, palindromes);
+
+        context.checking(new Expectations() {{
+            oneOf(input).read("Enter a palindrome: "); will(returnValue("Madam, I'm Eve."));
+            oneOf(palindromes).verify("Madam, I'm Eve."); will(returnValue(false));
+            oneOf(output).write("Don't be ridiculous. \"Madam, I'm Eve.\" is definitely not a palindrome.");
+        }});
+
+        console.run();
+    }
 }

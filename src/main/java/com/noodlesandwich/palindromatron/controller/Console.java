@@ -21,7 +21,10 @@ public final class Console implements Controller {
     @Override
     public void run() throws Exception {
         final String palindrome = input.read("Enter a palindrome: ");
-        palindromes.verify(palindrome);
-        output.write("Yes, \"" + palindrome + "\" is most certainly a palindrome.");
+        if (palindromes.verify(palindrome)) {
+            output.write("Yes, \"" + palindrome + "\" is most certainly a palindrome.");
+        } else {
+            output.write("Don't be ridiculous. \"" + palindrome + "\" is definitely not a palindrome.");
+        }
     }
 }
