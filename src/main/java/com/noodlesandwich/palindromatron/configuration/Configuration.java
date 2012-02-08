@@ -6,6 +6,7 @@ import java.io.PrintStream;
 import com.google.inject.AbstractModule;
 import com.noodlesandwich.palindromatron.controller.Console;
 import com.noodlesandwich.palindromatron.controller.Controller;
+import com.noodlesandwich.palindromatron.model.CachedPalindromes;
 import com.noodlesandwich.palindromatron.model.Palindromes;
 import com.noodlesandwich.palindromatron.model.SimplePalindromes;
 import com.noodlesandwich.palindromatron.view.ConsoleInput;
@@ -23,6 +24,7 @@ public final class Configuration extends AbstractModule {
         bind(InputStream.class).annotatedWith(ConsoleDependency.class).toInstance(System.in);
         bind(PrintStream.class).annotatedWith(ConsoleDependency.class).toInstance(System.out);
 
-        bind(Palindromes.class).to(SimplePalindromes.class);
+        bind(Palindromes.class).to(CachedPalindromes.class);
+        bind(Palindromes.class).annotatedWith(NoCaching.class).to(SimplePalindromes.class);
     }
 }
