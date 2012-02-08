@@ -23,4 +23,24 @@ public final class CachedPalindromesTest {
         assertThat(cachedPalindromes.verify("Murder for a jar of red rum"), is(true));
         assertThat(cachedPalindromes.verify("Murder for a jar of yellow custard"), is(false));
     }
+
+    @Test public void
+    remembers_verified_results() {
+        context.checking(new Expectations() {{
+            oneOf(palindromes).verify("a Toyota"); will(returnValue(true));
+        }});
+
+        assertThat(cachedPalindromes.verify("a Toyota"), is(true));
+        assertThat(cachedPalindromes.verify("a Toyota"), is(true));
+    }
+
+    @Test public void
+    remembers_rejected_results() {
+        context.checking(new Expectations() {{
+            oneOf(palindromes).verify("a Hyundai"); will(returnValue(false));
+        }});
+
+        assertThat(cachedPalindromes.verify("a Hyundai"), is(false));
+        assertThat(cachedPalindromes.verify("a Hyundai"), is(false));
+    }
 }
