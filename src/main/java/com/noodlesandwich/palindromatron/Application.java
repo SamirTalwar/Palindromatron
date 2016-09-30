@@ -1,13 +1,17 @@
 package com.noodlesandwich.palindromatron;
 
-import com.google.inject.Guice;
-import com.google.inject.Injector;
-import com.noodlesandwich.palindromatron.configuration.Configuration;
-import com.noodlesandwich.palindromatron.controller.Controller;
+import com.noodlesandwich.palindromatron.controller.Console;
+import com.noodlesandwich.palindromatron.model.CachedPalindromes;
+import com.noodlesandwich.palindromatron.model.SimplePalindromes;
+import com.noodlesandwich.palindromatron.view.ConsoleInput;
+import com.noodlesandwich.palindromatron.view.ConsoleOutput;
 
 public final class Application {
     public static void main(final String[] args) throws Exception {
-        final Injector injector = Guice.createInjector(new Configuration());
-        injector.getInstance(Controller.class).run();
+        new Console(
+                new ConsoleInput(System.in, System.out),
+                new ConsoleOutput(System.out),
+                new CachedPalindromes(new SimplePalindromes())
+        ).run();
     }
 }
