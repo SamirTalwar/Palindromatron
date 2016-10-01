@@ -7,12 +7,11 @@ import com.noodlesandwich.palindromatron.view.Input;
 import com.noodlesandwich.palindromatron.view.Output;
 import org.jmock.Expectations;
 import org.jmock.integration.junit4.JUnitRuleMockery;
-import org.jmock.lib.legacy.ClassImposteriser;
 import org.junit.Rule;
 import org.junit.Test;
 
 public class ConsoleTest {
-    @Rule public final JUnitRuleMockery context = new JUnitRuleMockery() {{ setImposteriser(ClassImposteriser.INSTANCE); }};
+    @Rule public final JUnitRuleMockery context = new JUnitRuleMockery();
 
     private final Input input = context.mock(Input.class);
     private final Output output = context.mock(Output.class);
