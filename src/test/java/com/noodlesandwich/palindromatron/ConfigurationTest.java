@@ -1,9 +1,8 @@
 package com.noodlesandwich.palindromatron;
 
-import org.junit.Test;
-
 import com.google.inject.Guice;
 import com.noodlesandwich.palindromatron.configuration.Configuration;
+import org.junit.Test;
 
 public class ConfigurationTest {
     @Test public void

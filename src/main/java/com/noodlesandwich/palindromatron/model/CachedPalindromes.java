@@ -9,8 +9,8 @@ import com.noodlesandwich.palindromatron.configuration.NoCaching;
 
 public final class CachedPalindromes implements Palindromes {
     private final Palindromes palindromes;
-    private final Set<String> trueCache = new HashSet<String>();
-    private final Set<String> falseCache = new HashSet<String>();
+    private final Set<String> trueCache = new HashSet<>();
+    private final Set<String> falseCache = new HashSet<>();
 
     @Inject
     public CachedPalindromes(@NoCaching final Palindromes palindromes) {

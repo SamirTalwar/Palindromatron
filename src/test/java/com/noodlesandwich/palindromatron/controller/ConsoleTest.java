@@ -2,19 +2,17 @@ package com.noodlesandwich.palindromatron.controller;
 
 import java.io.IOException;
 
-import org.jmock.Expectations;
-import org.jmock.Mockery;
-import org.jmock.integration.junit4.JMock;
-import org.junit.Test;
-import org.junit.runner.RunWith;
-
 import com.noodlesandwich.palindromatron.model.Palindromes;
 import com.noodlesandwich.palindromatron.view.Input;
 import com.noodlesandwich.palindromatron.view.Output;
+import org.jmock.Expectations;
+import org.jmock.integration.junit4.JUnitRuleMockery;
+import org.jmock.lib.legacy.ClassImposteriser;
+import org.junit.Rule;
+import org.junit.Test;
 
-@RunWith(JMock.class)
 public class ConsoleTest {
-    private final Mockery context = new Mockery();
+    @Rule public final JUnitRuleMockery context = new JUnitRuleMockery() {{ setImposteriser(ClassImposteriser.INSTANCE); }};
 
     private final Input input = context.mock(Input.class);
     private final Output output = context.mock(Output.class);

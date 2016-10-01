@@ -6,20 +6,18 @@ import java.io.PrintStream;
 
 import org.hamcrest.Description;
 import org.jmock.Expectations;
-import org.jmock.Mockery;
 import org.jmock.api.Action;
 import org.jmock.api.Invocation;
-import org.jmock.integration.junit4.JMock;
+import org.jmock.integration.junit4.JUnitRuleMockery;
 import org.jmock.lib.legacy.ClassImposteriser;
+import org.junit.Rule;
 import org.junit.Test;
-import org.junit.runner.RunWith;
 
-import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.Matchers.is;
+import static org.junit.Assert.assertThat;
 
-@RunWith(JMock.class)
 public class ConsoleInputTest {
-    private final Mockery context = new Mockery() {{ setImposteriser(ClassImposteriser.INSTANCE); }};
+    @Rule public final JUnitRuleMockery context = new JUnitRuleMockery() {{ setImposteriser(ClassImposteriser.INSTANCE); }};
 
     private final InputStream inputStream = context.mock(InputStream.class);
     private final PrintStream outputStream = context.mock(PrintStream.class);

@@ -4,15 +4,13 @@ import java.io.IOException;
 import java.io.PrintStream;
 
 import org.jmock.Expectations;
-import org.jmock.Mockery;
-import org.jmock.integration.junit4.JMock;
+import org.jmock.integration.junit4.JUnitRuleMockery;
 import org.jmock.lib.legacy.ClassImposteriser;
+import org.junit.Rule;
 import org.junit.Test;
-import org.junit.runner.RunWith;
 
-@RunWith(JMock.class)
 public class ConsoleOutputTest {
-    private final Mockery context = new Mockery() {{ setImposteriser(ClassImposteriser.INSTANCE); }};
+    @Rule public final JUnitRuleMockery context = new JUnitRuleMockery() {{ setImposteriser(ClassImposteriser.INSTANCE); }};
 
     private final PrintStream outputStream = context.mock(PrintStream.class);
 
