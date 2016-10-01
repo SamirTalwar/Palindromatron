@@ -49,9 +49,7 @@ public class ConsoleInputTest {
                 final int offset = (Integer) invocation.getParameter(1);
                 final byte[] stringBytes = string.getBytes();
                 final int length = Math.min((Integer) invocation.getParameter(2), stringBytes.length);
-                for (int i = 0; i < length; i++) {
-                    bytes[offset + i] = stringBytes[i];
-                }
+                System.arraycopy(stringBytes, 0, bytes, offset, length);
                 return length;
             }
 
