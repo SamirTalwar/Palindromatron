@@ -1,14 +1,15 @@
 package com.noodlesandwich.palindromatron.model;
 
 import org.jmock.Expectations;
-import org.jmock.Mockery;
+import org.jmock.integration.junit4.JUnitRuleMockery;
+import org.junit.Rule;
 import org.junit.Test;
 
 import static org.hamcrest.Matchers.is;
 import static org.junit.Assert.assertThat;
 
 public final class CachedPalindromesTest {
-    private final Mockery context = new Mockery();
+    @Rule public final JUnitRuleMockery context = new JUnitRuleMockery();
 
     private final Palindromes palindromes = context.mock(Palindromes.class);
     private final CachedPalindromes cachedPalindromes = new CachedPalindromes(palindromes);
